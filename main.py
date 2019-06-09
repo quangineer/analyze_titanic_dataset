@@ -25,3 +25,15 @@ df_train.fillna(df_train.mean(),inplace=True)
 df_train.dropna(inplace=True) # dropna = drop all row with Nal value in anywhere
 
 
+# Whether the fare is associated with Survival???
+survived = df_train.Survived == True
+died = df_train.Survived == False
+# Divived the Survived column into 2 groups
+(df_train["Survived"][survived].count())   # print 340
+(df_train["Survived"][died].count())       # print 549
+(df_train.Fare[survived].mean())    # print 48.2094
+(df_train.Fare[died].mean())        # print 22.1178
+
+df_train.Fare[survived].hist()
+df_train.Fare[died].hist()
+plt.show()

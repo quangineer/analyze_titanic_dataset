@@ -35,30 +35,34 @@ died = df_train.Survived == False
 (df_train.Fare[died].mean())        # print 22.1178
 
 # df_train.Fare[survived].hist(alpha=0.5, bins=20, label='survived')
-# df_train.Fare[died].hist(alpha=0.5, bins=20, label='died')
-# plt.show()
+df_train.Fare[died].hist(alpha=0.5, bins=20, label='died')
+plt.show()
 
 # Whether the fare is associated with class?
-# print(df_train.groupby("Pclass").Survived.mean())
+print(df_train.groupby("Pclass").Survived.mean())
 
-# # Distribution of Age between Survival and Died?
-# df_train.Age[survived].hist(alpha=0.5, bins=20, label='survived')
-# df_train.Age[died].hist(alpha=0.5, bins=20, label='died')
-# # plt.show()
+# Distribution of Age between Survival and Died?
+df_train.Age[survived].hist(alpha=0.5, bins=20, label='survived')
+df_train.Age[died].hist(alpha=0.5, bins=20, label='died')
+# plt.show()
 
-# # Gender associated with Survival/Died?
-# print(df_train.groupby("Sex").Survived.mean())
-# # Further investigate in Gender:
-# df_train["Sex"].value_counts()    # How many in each gender?
-# df_train.groupby("Sex")["Pclass"].value_counts()
-# df_train.query('Sex=="female"')["Fare"].median()   # 23
-# df_train.query('Sex=="male"')["Fare"].median()     # 10.5
-# df_train.groupby(["Pclass","Sex"]).Survived.mean().plot(kind='bar')
-# # plt.show() # Women in each fare class survived more than men
+# Gender associated with Survival/Died?
+print(df_train.groupby("Sex").Survived.mean())
+# Further investigate in Gender:
+df_train["Sex"].value_counts()    # How many in each gender?
+df_train.groupby("Sex")["Pclass"].value_counts()
+df_train.query('Sex=="female"')["Fare"].median()   # 23
+df_train.query('Sex=="male"')["Fare"].median()     # 10.5
+df_train.groupby(["Pclass","Sex"]).Survived.mean().plot(kind='bar')
+# plt.show() # Women in each fare class survived more than men
 
-# print (df_train["SibSp"][survived].value_counts())
-# print (df_train["SibSp"][died].value_counts())
+print (df_train["SibSp"][survived].value_counts())
+print (df_train["SibSp"][died].value_counts())
 
 df_train["SibSp"][survived].value_counts().plot(kind="bar", alpha=0.5, color="blue", label="survived")
 df_train["SibSp"][died].value_counts().plot(kind="bar", alpha=0.5, color="orange", label="died")
+plt.show()
+
+df_train["Embarked"][survived].value_counts().plot(kind="bar", alpha=0.5, color="blue", label="survived")
+df_train["Embarked"][died].value_counts().plot(kind="bar", alpha=0.5, color="orange", label="died")
 plt.show()

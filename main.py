@@ -34,6 +34,16 @@ died = df_train.Survived == False
 (df_train.Fare[survived].mean())    # print 48.2094
 (df_train.Fare[died].mean())        # print 22.1178
 
-df_train.Fare[survived].hist()
-df_train.Fare[died].hist()
+df_train.Fare[survived].hist(alpha=0.5, bins=20, label='survived')
+df_train.Fare[died].hist(alpha=0.5, bins=20, label='died')
 plt.show()
+
+# Whether the fare is associated with class?
+# print(df_train.groupby("Pclass").Survived.mean())
+
+# Distribution of Age between Survival and Died?
+# df_train.Age[survived].hist(alpha=0.5, bins=20, label='survived')
+# df_train.Age[died].hist(alpha=0.5, bins=20, label='died')
+# plt.show()
+
+# 
